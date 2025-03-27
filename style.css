@@ -52,6 +52,14 @@ button {
     border: 0px;
 }
 
+button:hover {
+    background-color: #697a97;
+}
+
+button:active {
+    background-color: #455064;
+}
+
 .numbers>button {
     width: 60px;
     flex: 1 1 auto;

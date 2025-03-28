@@ -27,6 +27,14 @@
     margin-bottom: 15px;
     flex: 1;
     box-shadow: inset 3px 3px rgb(78, 78, 78);
+    display: flex;
+    align-items: center;
+}
+
+.display>h1 {
+    font-size: 50px;
+    color:rgb(216, 216, 216);
+    margin-left: 10px;
 }
 
 .buttons {

@@ -27,5 +27,23 @@ function operate(num1, num2, operator) {
     }
 }
 
-let num1 = num2 = 0;
-let operator = "";
+let frame = document.querySelector(".frame");
+let displayText = document.querySelector(".display>h1");
+
+let currentNum = [];
+
+frame.addEventListener("click", (event) => {
+    if(event.target.tagName === "BUTTON") {
+        if(event.target.getAttribute("class") == "nums") {
+            if(currentNum.length < 9) {
+                currentNum.push(event.target.textContent);
+                displayText.textContent = currentNum.join('');
+            }
+        }
+
+        if(event.target.getAttribute("class") == "clear") {
+            currentNum = [];
+            displayText.textContent = 0;
+        }
+    }
+});

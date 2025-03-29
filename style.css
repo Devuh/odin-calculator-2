@@ -38,6 +38,11 @@
     margin-right: 10px;
 }
 
+.top-buttons {
+    display: flex;
+    height: px;
+}
+
 .buttons {
     display: flex;
     flex-direction: column;
@@ -46,6 +51,10 @@
 
 .clear {
     width: 140px;
+    flex: 1;
+}
+
+.backspace {
     flex: 1;
 }
 

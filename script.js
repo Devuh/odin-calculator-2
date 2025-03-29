@@ -103,5 +103,25 @@ frame.addEventListener("click", (event) => {
             refreshDisplay();
             clear();
         }
+
+        if(event.target.getAttribute("class") == "backspace") {
+            if(
+                operation[operation.length - 1] == ""
+                && operation.length != 1
+            ) {
+                operation.pop();
+            }
+
+            if(operation[operation.length - 1] != "") {
+                if(operation[1] && !operation[2]) {
+                    operation.pop();
+                    refreshDisplay(operation[operation.length - 1]);
+                } else {
+                    let current = operation[operation.length - 1];
+                    operation[operation.length - 1] = current.slice(0, -1);
+                    refreshDisplay(operation[operation.length - 1]);
+                }
+            }
+        }
     }
 });

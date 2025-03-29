@@ -64,18 +64,24 @@ body.addEventListener("keydown", (event) => {
 frame.addEventListener("click", (event) => {
     if(event.target.tagName === "BUTTON") {
         if(event.target.getAttribute("class") == "nums") {
-            if(operation[1] == "=") {
-                operation = [""];
-            }
+            /*
+            If the last operation was evaluated and the 
+            user presses a number, clear the operation
+            */
+            if(operation[1] == "=") operation = [""];
 
-            if(operation[operation.length - 1].length < 9) {
-                if(
-                    event.target.textContent != "."
-                    || !operation[operation.length - 1].includes(".")
-                ) {
-                    operation[operation.length - 1] += event.target.textContent;
-                    refreshDisplay(operation[operation.length -1]);
-                }
+            /*
+            Add num to operation and refresh display if
+            no more than one decimal points are present
+            and if the input is less than 9 characters
+            */
+            if(
+                operation[operation.length - 1].length < 9
+                && (event.target.textContent != "."
+                || !operation[operation.length - 1].includes("."))
+            ) {
+                operation[operation.length - 1] += event.target.textContent;
+                refreshDisplay(operation[operation.length -1]);
             }
         }
 
@@ -93,7 +99,7 @@ frame.addEventListener("click", (event) => {
                 );
                 operation = [result.toString(), event.target.textContent];
                 operation.push("");
-                refreshDisplay(result);
+                refreshDisplay(operation[0]);
             }
         }
 
@@ -106,7 +112,7 @@ frame.addEventListener("click", (event) => {
                 );
                 operation = [result.toString(), "="];
                 operation.push("");
-                refreshDisplay(result);
+                refreshDisplay(operation[0]);
             }
         }
 

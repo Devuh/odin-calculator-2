@@ -43,12 +43,23 @@ function clear() {
     operation = [""];
 }
  
+const body = document.querySelector("body");
 const frame = document.querySelector(".frame");
 const displayText = document.querySelector(".display>h1");
 
 const DECIMALPLACE = Math.pow(10, 8);
 
 let operation = [""]; // [operand1, operator, operand2]
+
+body.addEventListener("keydown", (event) => {
+    let buttons = document.querySelectorAll("button");
+
+    buttons.forEach((num) => {
+        if(num.textContent.toLowerCase() == event.key.toLowerCase()) {
+            num.click();
+        }
+    })
+});
 
 frame.addEventListener("click", (event) => {
     if(event.target.tagName === "BUTTON") {
@@ -80,7 +91,7 @@ frame.addEventListener("click", (event) => {
                     parseFloat(operation[2]),
                     operation[1]
                 );
-                operation = [result, event.target.textContent];
+                operation = [result.toString(), event.target.textContent];
                 operation.push("");
                 refreshDisplay(result);
             }
@@ -93,7 +104,7 @@ frame.addEventListener("click", (event) => {
                     parseFloat(operation[2]),
                     operation[1]
                 );
-                operation = [result, "="];
+                operation = [result.toString(), "="];
                 operation.push("");
                 refreshDisplay(result);
             }
